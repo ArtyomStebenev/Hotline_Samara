@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfxcuvxydr0g0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wilv1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obbl6"]
+size = Vector2(23, 6)
+
+[node name="door" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
+mass = 1.166
+physics_material_override = SubResource("PhysicsMaterial_wilv1")
+gravity_scale = 0.0
+can_sleep = false
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(527.5, -23)
+shape = SubResource("RectangleShape2D_obbl6")

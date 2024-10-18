@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk2l8cbh8r5yt"]
+
+[ext_resource type="Script" path="res://src/mechanics/main character.gd" id="1_qgh6n"]
+[ext_resource type="Texture2D" uid="uid://cufntnowfpddf" path="res://img/sprites/Characters_danil/BETA/character 1.png" id="2_fk84h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45tgr"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mofc2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fk84h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="main character" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_qgh6n")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_45tgr")
+debug_color = Color(0, 0.619608, 0.572549, 0.14902)
+
+[node name="rotation node" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rotation node"]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_mofc2")
