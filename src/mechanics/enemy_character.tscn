@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://qtu72svhptsc"]
+
+[ext_resource type="Script" path="res://src/mechanics/enemy_character.gd" id="1_2irmc"]
+[ext_resource type="Texture2D" uid="uid://bbnadv4pbkldi" path="res://img/enemy_character.png" id="1_qdxfx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ygrl"]
+radius = 13.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l68d4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qdxfx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enemy_character" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_2irmc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7ygrl")
+one_way_collision_margin = 1.1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l68d4")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 15.0
+navigation_layers = 16
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

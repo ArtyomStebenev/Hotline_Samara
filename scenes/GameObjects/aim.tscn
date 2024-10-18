@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ve4srbbqk7fp"]
+
+[ext_resource type="Texture2D" uid="uid://dywmjfafx3grd" path="res://img/GameObjects/Aim/aim.png" id="1_532rq"]
+[ext_resource type="Script" path="res://scenes/GameObjects/aim.gd" id="1_u1rlu"]
+
+[node name="Node2D" type="Node2D"]
+z_index = 10
+script = ExtResource("1_u1rlu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.005, 0.005)
+texture = ExtResource("1_532rq")
